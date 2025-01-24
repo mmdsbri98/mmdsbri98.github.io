@@ -377,6 +377,14 @@ h1, .h1 {
   }
 }
 
+.text-orange {
+    color: orange;
+}
+
+.border-orange {
+    border-color: orange;
+}
+
 h2, .h2 {
   font-size: 2rem;
 }
