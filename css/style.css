@@ -396,6 +396,10 @@ h1, .h1 {
     color: orange !important;
 }
 
+.white-link {
+    color: white;
+}
+
 .gray-limk {
     color: gray !important;
 }
