@@ -385,6 +385,11 @@ h1, .h1 {
     border-color: orange;
 }
 
+.orange-link {
+    color: orange !important;
+}
+
+
 h2, .h2 {
   font-size: 2rem;
 }
