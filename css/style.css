@@ -404,6 +404,9 @@ h1, .h1 {
     color: gray-dark !important;
 }
 
+.gray-link {
+    color: gray !important;
+}
 .blue-link {
     color: blue !important;
 }
