@@ -396,6 +396,10 @@ h1, .h1 {
     color: orange !important;
 }
 
+.purple-link {
+    color: purple
+}
+
 .white-link {
     color: white;
 }
