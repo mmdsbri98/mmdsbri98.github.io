@@ -392,6 +392,9 @@ h1, .h1 {
     color: orange !important;
 }
 
+.blue-link {
+    color: blue !important;
+}
 
 h2, .h2 {
   font-size: 2rem;
