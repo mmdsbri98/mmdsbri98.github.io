@@ -26,6 +26,30 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        .bodyss {
+            background-color: #f8f9fa;
+            font-family: 'Roboto', sans-serif;
+        }
+        .cardss {
+            border-radius: 10px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .footermmd {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .badgeasal {
+            font-size: 14px;
+        }
+    </style>
     
 </head>
 
@@ -325,12 +349,12 @@ lookup latency by about 21% compared to several algorithmic baselines.</p>
         </div>
     </div>
     <!-- About End -->
-    <div class="container-fluid py-5" id="Master">
+    <div class="container-fluid py-5 bodyss" id="Master">
         <div class="container">
             <div class="text-center mb-4">
                 <h1 class="text-uppercase text-secondary">Master Thesis</h1>
             </div>
-            <div class="card shadow-lg">
+            <div class="cardss shadow-lg">
                 <h2>Learning-Based Rule Caching in SDN</h2>
                 <p class="location text-muted">Sharif University of Technology</p>
                 <p class="description">
@@ -339,8 +363,8 @@ lookup latency by about 21% compared to several algorithmic baselines.</p>
                     comprehensive view of the network. Software-Defined Networks (SDNs), by separating control and data planes,
                     offer enhanced flexibility and efficiency in network management.
                 </p>
-                <div class="footer mt-3">
-                    <span class="badge bg-primary">THESIS</span>
+                <div class="footermmd mt-3">
+                    <span class="badgeasal bg-primary">THESIS</span>
                     <span class="text-muted">SEPTEMBER 2, 2023</span>
                     <span class="text-muted small">Mohammad Saberi, Prof. Ali Movaghar</span>
                     <a href="thesis.pdf" class="btn btn-outline-primary">📄 Download</a>
