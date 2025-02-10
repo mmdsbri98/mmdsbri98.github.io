@@ -594,7 +594,6 @@ lookup latency by about 21% compared to several algorithmic baselines.
         </div>
     </div>
    <script>
-        // پلاگین برای نمایش درصد داخل دایره
         const centerTextPlugin = {
             id: 'centerText',
             beforeDraw: (chart) => {
@@ -619,21 +618,14 @@ lookup latency by about 21% compared to several algorithmic baselines.
 
         Chart.register(centerTextPlugin);
 
-        function createChart(canvasId, percentage, color) {
+        function createChart(canvasId, percentage) {
             const ctx = document.getElementById(canvasId).getContext('2d');
-
             new Chart(ctx, {
                 type: 'doughnut',
                 data: {
                     datasets: [{
                         data: [percentage, 100 - percentage],
-                        backgroundColor: [
-                            {
-                                pattern: Chart.pattern.draw('diagonal', color), // پترن راه‌راه
-                                color: color
-                            }, 
-                            "#E0E0E0"
-                        ]
+                        backgroundColor: ['#4CAF50', '#E0E0E0']
                     }]
                 },
                 options: {
@@ -642,16 +634,6 @@ lookup latency by about 21% compared to several algorithmic baselines.
                     plugins: {
                         tooltip: { enabled: false },
                         legend: { display: false },
-                        datalabels: { 
-                            color: "#000", 
-                            formatter: (value, ctx) => {
-                                return ctx.dataIndex === 0 ? value + "%" : "";
-                            },
-                            font: {
-                                weight: "bold",
-                                size: 14
-                            }
-                        }
                     }
                 }
             });
