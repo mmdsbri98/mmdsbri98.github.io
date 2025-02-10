@@ -67,11 +67,10 @@
             align-items: center;
             justify-content: center;
             width: 150px;
-            position: relative;
         }
         canvas {
-            width: 100px !important;
-            height: 100px !important;
+            width: 120px !important;
+            height: 120px !important;
         }
         .percentage {
             position: absolute;
@@ -545,41 +544,58 @@ lookup latency by about 21% compared to several algorithmic baselines.
     <!-- Skill End -->
     <div class="skills-container">
         <div class="skill">
-            <div class="percentage" id="percent1"></div>
             <canvas id="chart1"></canvas>
             <p>Python</p>
         </div>
         <div class="skill">
-            <div class="percentage" id="percent2"></div>
             <canvas id="chart2"></canvas>
             <p>P4</p>
         </div>
         <div class="skill">
-            <div class="percentage" id="percent3"></div>
             <canvas id="chart3"></canvas>
             <p>JavaScript</p>
         </div>
         <div class="skill">
-            <div class="percentage" id="percent4"></div>
             <canvas id="chart4"></canvas>
             <p>Mininet</p>
         </div>
         <div class="skill">
-            <div class="percentage" id="percent5"></div>
             <canvas id="chart5"></canvas>
             <p>eBPF</p>
         </div>
         <div class="skill">
-            <div class="percentage" id="percent6"></div>
             <canvas id="chart6"></canvas>
             <p>CVXPY</p>
         </div>
     </div>
-    <script>
-        function createChart(canvasId, percentId, percentage) {
+   <script>
+        // پلاگین برای نمایش درصد داخل دایره
+        const centerTextPlugin = {
+            id: 'centerText',
+            beforeDraw: (chart) => {
+                const width = chart.width;
+                const height = chart.height;
+                const ctx = chart.ctx;
+                ctx.restore();
+                
+                const fontSize = (height / 8).toFixed(2);
+                ctx.font = fontSize + "px Arial";
+                ctx.textBaseline = "middle";
+                ctx.textAlign = "center";
+
+                const text = chart.config.data.datasets[0].data[0] + "%";
+                const textX = Math.round(width / 2);
+                const textY = Math.round(height / 2);
+
+                ctx.fillText(text, textX, textY);
+                ctx.save();
+            }
+        };
+
+        Chart.register(centerTextPlugin);
+
+        function createChart(canvasId, percentage) {
             const ctx = document.getElementById(canvasId).getContext('2d');
-            document.getElementById(percentId).innerText = percentage + "%";
-            
             new Chart(ctx, {
                 type: 'doughnut',
                 data: {
@@ -599,12 +615,12 @@ lookup latency by about 21% compared to several algorithmic baselines.
             });
         }
 
-        createChart("chart1", "percent1", 70);
-        createChart("chart2", "percent2", 80);
-        createChart("chart3", "percent3", 40);
-        createChart("chart4", "percent4", 85);
-        createChart("chart5", "percent5", 35);
-        createChart("chart6", "percent6", 70);
+        createChart("chart1", 70);
+        createChart("chart2", 80);
+        createChart("chart3", 40);
+        createChart("chart4", 85);
+        createChart("chart5", 35);
+        createChart("chart6", 70);
     </script>
     <!-- Contact Start -->
     <div class="container-fluid py-5" id="contact" style="background-color: #000033;">
