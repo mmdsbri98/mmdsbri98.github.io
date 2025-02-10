@@ -27,6 +27,9 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-pattern@1.1.1/dist/chartjs-plugin-pattern.min.js"></script>
+    
     <style>
         .bodyss {
             background-color: #f8f9fa;
@@ -618,14 +621,21 @@ lookup latency by about 21% compared to several algorithmic baselines.
 
         Chart.register(centerTextPlugin);
 
-        function createChart(canvasId, percentage) {
+        function createChart(canvasId, percentage, color) {
             const ctx = document.getElementById(canvasId).getContext('2d');
+
             new Chart(ctx, {
                 type: 'doughnut',
                 data: {
                     datasets: [{
                         data: [percentage, 100 - percentage],
-                        backgroundColor: ['#4CAF50', '#E0E0E0']
+                        backgroundColor: [
+                            {
+                                pattern: Chart.pattern.draw('diagonal', color), // پترن راه‌راه
+                                color: color
+                            }, 
+                            "#E0E0E0"
+                        ]
                     }]
                 },
                 options: {
@@ -634,6 +644,16 @@ lookup latency by about 21% compared to several algorithmic baselines.
                     plugins: {
                         tooltip: { enabled: false },
                         legend: { display: false },
+                        datalabels: { 
+                            color: "#000", 
+                            formatter: (value, ctx) => {
+                                return ctx.dataIndex === 0 ? value + "%" : "";
+                            },
+                            font: {
+                                weight: "bold",
+                                size: 14
+                            }
+                        }
                     }
                 }
             });
