@@ -62,21 +62,32 @@
             max-width: 1200px;
         }
         .skill {
-            width: 150px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            width: 150px;
+            position: relative;
+        }
+        canvas {
+            width: 100px !important;
+            height: 100px !important;
+        }
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
         }
         .skill p {
             margin-top: 10px;
             font-weight: bold;
             color: #666;
         }
-        canvas {
-            width: 100px !important;
-            height: 100px !important;
-        }
+        
     </style>
     
 </head>
@@ -533,21 +544,42 @@ lookup latency by about 21% compared to several algorithmic baselines.
     </div>
     <!-- Skill End -->
     <div class="skills-container">
-        <div class="skill"><canvas id="chart1"></canvas><p>Python</p></div>
-        <div class="skill"><canvas id="chart2"></canvas><p>P4</p></div>
-        <div class="skill"><canvas id="chart3"></canvas><p>JavaScript</p></div>
-        <div class="skill"><canvas id="chart4"></canvas><p>Mininet</p></div>
-        <div class="skill"><canvas id="chart5"></canvas><p>eBPF</p></div>
-        <div class="skill"><canvas id="chart6"></canvas><p>CVXPY</p></div>
-        <div class="skill"><canvas id="chart7"></canvas><p>SCIP</p></div>
-        <div class="skill"><canvas id="chart8"></canvas><p>LaTeX</p></div>
-        <div class="skill"><canvas id="chart9"></canvas><p>SDN</p></div>
-        <div class="skill"><canvas id="chart10"></canvas><p>Linux</p></div>
-        <div class="skill"><canvas id="chart11"></canvas><p>Windows</p></div>
+        <div class="skill">
+            <div class="percentage" id="percent1"></div>
+            <canvas id="chart1"></canvas>
+            <p>Python</p>
+        </div>
+        <div class="skill">
+            <div class="percentage" id="percent2"></div>
+            <canvas id="chart2"></canvas>
+            <p>P4</p>
+        </div>
+        <div class="skill">
+            <div class="percentage" id="percent3"></div>
+            <canvas id="chart3"></canvas>
+            <p>JavaScript</p>
+        </div>
+        <div class="skill">
+            <div class="percentage" id="percent4"></div>
+            <canvas id="chart4"></canvas>
+            <p>Mininet</p>
+        </div>
+        <div class="skill">
+            <div class="percentage" id="percent5"></div>
+            <canvas id="chart5"></canvas>
+            <p>eBPF</p>
+        </div>
+        <div class="skill">
+            <div class="percentage" id="percent6"></div>
+            <canvas id="chart6"></canvas>
+            <p>CVXPY</p>
+        </div>
     </div>
     <script>
-        function createChart(canvasId, percentage) {
+        function createChart(canvasId, percentId, percentage) {
             const ctx = document.getElementById(canvasId).getContext('2d');
+            document.getElementById(percentId).innerText = percentage + "%";
+            
             new Chart(ctx, {
                 type: 'doughnut',
                 data: {
@@ -567,21 +599,12 @@ lookup latency by about 21% compared to several algorithmic baselines.
             });
         }
 
-        const skills = [
-            { id: "chart1", percentage: 70 },
-            { id: "chart2", percentage: 80 },
-            { id: "chart3", percentage: 40 },
-            { id: "chart4", percentage: 85 },
-            { id: "chart5", percentage: 35 },
-            { id: "chart6", percentage: 70 },
-            { id: "chart7", percentage: 90 },
-            { id: "chart8", percentage: 100 },
-            { id: "chart9", percentage: 90 },
-            { id: "chart10", percentage: 80 },
-            { id: "chart11", percentage: 80 }
-        ];
-
-        skills.forEach(skill => createChart(skill.id, skill.percentage));
+        createChart("chart1", "percent1", 70);
+        createChart("chart2", "percent2", 80);
+        createChart("chart3", "percent3", 40);
+        createChart("chart4", "percent4", 85);
+        createChart("chart5", "percent5", 35);
+        createChart("chart6", "percent6", 70);
     </script>
     <!-- Contact Start -->
     <div class="container-fluid py-5" id="contact" style="background-color: #000033;">
